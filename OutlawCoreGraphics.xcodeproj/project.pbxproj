@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AEB49CB91E05DF240046FB29 /* OutlawCoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEB49CAF1E05DF240046FB29 /* OutlawCoreGraphics.framework */; };
-		AEB49CBE1E05DF240046FB29 /* OutlawCoreGraphicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB49CBD1E05DF240046FB29 /* OutlawCoreGraphicsTests.swift */; };
 		AEB49CC01E05DF240046FB29 /* OutlawCoreGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = AEB49CB21E05DF240046FB29 /* OutlawCoreGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AEB49CD21E05E0660046FB29 /* CGAffineTransform+Outlaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB49CCA1E05E0660046FB29 /* CGAffineTransform+Outlaw.swift */; };
 		AEB49CD31E05E0660046FB29 /* CGFloat+Outlaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB49CCB1E05E0660046FB29 /* CGFloat+Outlaw.swift */; };
@@ -20,6 +19,14 @@
 		AEB49CD91E05E0660046FB29 /* CGVector+Outlaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB49CD11E05E0660046FB29 /* CGVector+Outlaw.swift */; };
 		AEB49CDC1E05E0CE0046FB29 /* Outlaw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEB49CDB1E05E0CE0046FB29 /* Outlaw.framework */; };
 		AEB49CE91E05E1FE0046FB29 /* Outlaw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEB49CE81E05E1FE0046FB29 /* Outlaw.framework */; };
+		AEB49CEB1E05E6A20046FB29 /* CGAffineTransformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB49CEA1E05E6A20046FB29 /* CGAffineTransformTests.swift */; };
+		AEB49CED1E05EB570046FB29 /* CGFloatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB49CEC1E05EB570046FB29 /* CGFloatTests.swift */; };
+		AEB49CEF1E05EC580046FB29 /* CGLineCapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB49CEE1E05EC580046FB29 /* CGLineCapTests.swift */; };
+		AEB49CF11E05EDF20046FB29 /* CGLineJoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB49CF01E05EDF20046FB29 /* CGLineJoinTests.swift */; };
+		AEB49CF31E05EEBF0046FB29 /* CGPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB49CF21E05EEBF0046FB29 /* CGPointTests.swift */; };
+		AEB49CF51E05F1B50046FB29 /* CGRectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB49CF41E05F1B50046FB29 /* CGRectTests.swift */; };
+		AEB49CF71E05F3390046FB29 /* CGSizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB49CF61E05F3390046FB29 /* CGSizeTests.swift */; };
+		AEB49CF91E05F4260046FB29 /* CGVectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB49CF81E05F4260046FB29 /* CGVectorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +44,6 @@
 		AEB49CB21E05DF240046FB29 /* OutlawCoreGraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutlawCoreGraphics.h; sourceTree = "<group>"; };
 		AEB49CB31E05DF240046FB29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEB49CB81E05DF240046FB29 /* OutlawCoreGraphicsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OutlawCoreGraphicsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AEB49CBD1E05DF240046FB29 /* OutlawCoreGraphicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlawCoreGraphicsTests.swift; sourceTree = "<group>"; };
 		AEB49CBF1E05DF240046FB29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEB49CCA1E05E0660046FB29 /* CGAffineTransform+Outlaw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGAffineTransform+Outlaw.swift"; sourceTree = "<group>"; };
 		AEB49CCB1E05E0660046FB29 /* CGFloat+Outlaw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Outlaw.swift"; sourceTree = "<group>"; };
@@ -49,6 +55,14 @@
 		AEB49CD11E05E0660046FB29 /* CGVector+Outlaw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Outlaw.swift"; sourceTree = "<group>"; };
 		AEB49CDB1E05E0CE0046FB29 /* Outlaw.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Outlaw.framework; path = "Carthage/Checkouts/outlaw/build/Debug-iphoneos/Outlaw.framework"; sourceTree = "<group>"; };
 		AEB49CE81E05E1FE0046FB29 /* Outlaw.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Outlaw.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEB49CEA1E05E6A20046FB29 /* CGAffineTransformTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGAffineTransformTests.swift; sourceTree = "<group>"; };
+		AEB49CEC1E05EB570046FB29 /* CGFloatTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatTests.swift; sourceTree = "<group>"; };
+		AEB49CEE1E05EC580046FB29 /* CGLineCapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGLineCapTests.swift; sourceTree = "<group>"; };
+		AEB49CF01E05EDF20046FB29 /* CGLineJoinTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGLineJoinTests.swift; sourceTree = "<group>"; };
+		AEB49CF21E05EEBF0046FB29 /* CGPointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointTests.swift; sourceTree = "<group>"; };
+		AEB49CF41E05F1B50046FB29 /* CGRectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectTests.swift; sourceTree = "<group>"; };
+		AEB49CF61E05F3390046FB29 /* CGSizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGSizeTests.swift; sourceTree = "<group>"; };
+		AEB49CF81E05F4260046FB29 /* CGVectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGVectorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +118,14 @@
 		AEB49CBC1E05DF240046FB29 /* OutlawCoreGraphicsTests */ = {
 			isa = PBXGroup;
 			children = (
-				AEB49CBD1E05DF240046FB29 /* OutlawCoreGraphicsTests.swift */,
+				AEB49CEA1E05E6A20046FB29 /* CGAffineTransformTests.swift */,
+				AEB49CEC1E05EB570046FB29 /* CGFloatTests.swift */,
+				AEB49CEE1E05EC580046FB29 /* CGLineCapTests.swift */,
+				AEB49CF01E05EDF20046FB29 /* CGLineJoinTests.swift */,
+				AEB49CF21E05EEBF0046FB29 /* CGPointTests.swift */,
+				AEB49CF41E05F1B50046FB29 /* CGRectTests.swift */,
+				AEB49CF61E05F3390046FB29 /* CGSizeTests.swift */,
+				AEB49CF81E05F4260046FB29 /* CGVectorTests.swift */,
 				AEB49CBF1E05DF240046FB29 /* Info.plist */,
 			);
 			path = OutlawCoreGraphicsTests;
@@ -261,7 +282,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEB49CBE1E05DF240046FB29 /* OutlawCoreGraphicsTests.swift in Sources */,
+				AEB49CED1E05EB570046FB29 /* CGFloatTests.swift in Sources */,
+				AEB49CF11E05EDF20046FB29 /* CGLineJoinTests.swift in Sources */,
+				AEB49CEB1E05E6A20046FB29 /* CGAffineTransformTests.swift in Sources */,
+				AEB49CEF1E05EC580046FB29 /* CGLineCapTests.swift in Sources */,
+				AEB49CF31E05EEBF0046FB29 /* CGPointTests.swift in Sources */,
+				AEB49CF71E05F3390046FB29 /* CGSizeTests.swift in Sources */,
+				AEB49CF91E05F4260046FB29 /* CGVectorTests.swift in Sources */,
+				AEB49CF51E05F1B50046FB29 /* CGRectTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
