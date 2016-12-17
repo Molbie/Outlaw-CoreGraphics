@@ -46,3 +46,9 @@ extension CGRect: Serializable {
         return result
     }
 }
+
+extension CGRect: IndexSerializable {
+    public func serialized() -> [CGFloat] {
+        return [self.origin.x, self.origin.y, self.width, self.height]
+    }
+}

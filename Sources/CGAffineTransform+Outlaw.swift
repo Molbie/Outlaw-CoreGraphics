@@ -52,3 +52,9 @@ extension CGAffineTransform: Serializable {
         return result
     }
 }
+
+extension CGAffineTransform: IndexSerializable {
+    public func serialized() -> [CGFloat] {
+        return [self.a, self.b, self.c, self.d, self.tx, self.ty]
+    }
+}

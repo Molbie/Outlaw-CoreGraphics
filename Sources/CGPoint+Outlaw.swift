@@ -40,3 +40,9 @@ extension CGPoint: Serializable {
         return result
     }
 }
+
+extension CGPoint: IndexSerializable {
+    public func serialized() -> [CGFloat] {
+        return [self.x, self.y]
+    }
+}

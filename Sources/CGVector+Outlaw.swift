@@ -40,3 +40,9 @@ extension CGVector: Serializable {
         return result
     }
 }
+
+extension CGVector: IndexSerializable {
+    public func serialized() -> [CGFloat] {
+        return [self.dx, self.dy]
+    }
+}

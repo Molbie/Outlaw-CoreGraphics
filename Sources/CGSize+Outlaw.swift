@@ -40,3 +40,9 @@ extension CGSize: Serializable {
         return result
     }
 }
+
+extension CGSize: IndexSerializable {
+    public func serialized() -> [CGFloat] {
+        return [self.width, self.height]
+    }
+}
