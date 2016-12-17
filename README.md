@@ -1,4 +1,4 @@
-# Outlaw Extensions
+# Outlaw-CoreGraphics
 
-Various macOS, iOS, watchOS and tvOS extensions for [Outlaw](https://github.com/Molbie/Outlaw)
+CoreGraphics extensions for [Outlaw](https://github.com/Molbie/Outlaw)
 
