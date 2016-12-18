@@ -13,13 +13,15 @@ import Outlaw
 
 class CGLineCapTests: XCTestCase {
     func testStringInit() {
-        let butt = CGLineCap(stringValue: "butt")
+        typealias strings = CGLineCap.StringValues
+        
+        let butt = CGLineCap(stringValue: strings.butt)
         XCTAssertEqual(butt, .butt)
         
-        let round = CGLineCap(stringValue: "round")
+        let round = CGLineCap(stringValue: strings.round)
         XCTAssertEqual(round, .round)
         
-        let square = CGLineCap(stringValue: "square")
+        let square = CGLineCap(stringValue: strings.square)
         XCTAssertEqual(square, .square)
         
         let invalid = CGLineCap(stringValue: "invalid")
@@ -27,13 +29,15 @@ class CGLineCapTests: XCTestCase {
     }
     
     func testUpperStringInit() {
-        let butt = CGLineCap(stringValue: "BUTT")
+        typealias strings = CGLineCap.StringValues
+        
+        let butt = CGLineCap(stringValue: strings.butt.uppercased())
         XCTAssertEqual(butt, .butt)
         
-        let round = CGLineCap(stringValue: "ROUND")
+        let round = CGLineCap(stringValue: strings.round.uppercased())
         XCTAssertEqual(round, .round)
         
-        let square = CGLineCap(stringValue: "SQUARE")
+        let square = CGLineCap(stringValue: strings.square.uppercased())
         XCTAssertEqual(square, .square)
         
         let invalid = CGLineCap(stringValue: "INVALID")
@@ -41,13 +45,15 @@ class CGLineCapTests: XCTestCase {
     }
     
     func testStringValue() {
+        typealias strings = CGLineCap.StringValues
+        
         let butt = CGLineCap.butt
-        XCTAssertEqual(butt.stringValue, "butt")
+        XCTAssertEqual(butt.stringValue, strings.butt)
         
         let round = CGLineCap.round
-        XCTAssertEqual(round.stringValue, "round")
+        XCTAssertEqual(round.stringValue, strings.round)
         
         let square = CGLineCap.square
-        XCTAssertEqual(square.stringValue, "square")
+        XCTAssertEqual(square.stringValue, strings.square)
     }
 }

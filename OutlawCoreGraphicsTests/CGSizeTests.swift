@@ -13,12 +13,15 @@ import Outlaw
 
 class CGSizeTests: XCTestCase {
     func testExtractableValue() {
-        let rawData: [String: CGFloat] = ["width": 1, "height": 2]
+        typealias keys = CGSize.ExtractableKeys
+        
+        let rawData: [String: CGFloat] = [keys.width: 1,
+                                          keys.height: 2]
         let data: [String: [String: CGFloat]] = ["size": rawData]
         let size: CGSize = try! data.value(for: "size")
         
-        XCTAssertEqual(size.width, rawData["width"])
-        XCTAssertEqual(size.height, rawData["height"])
+        XCTAssertEqual(size.width, rawData[keys.width])
+        XCTAssertEqual(size.height, rawData[keys.height])
     }
     
     func testIndexExtractableValue() {
@@ -47,11 +50,13 @@ class CGSizeTests: XCTestCase {
     }
     
     func testSerializable() {
+        typealias keys = CGSize.ExtractableKeys
+        
         let size = CGSize(width: 1, height: 2)
         let data: [String: CGFloat] = size.serialized()
         
-        XCTAssertEqual(data["width"], size.width)
-        XCTAssertEqual(data["height"], size.height)
+        XCTAssertEqual(data[keys.width], size.width)
+        XCTAssertEqual(data[keys.height], size.height)
     }
     
     func testIndexSerializable() {

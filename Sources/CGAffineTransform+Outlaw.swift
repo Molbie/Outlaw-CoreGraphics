@@ -10,15 +10,28 @@ import CoreGraphics
 import Outlaw
 
 
+public extension CGAffineTransform {
+    public struct ExtractableKeys {
+        public static let a = "a"
+        public static let b = "b"
+        public static let c = "c"
+        public static let d = "d"
+        public static let tx = "tx"
+        public static let ty = "ty"
+    }
+}
+
 extension CGAffineTransform: Value {
     public static func value(from object: Any) throws -> CGAffineTransform {
         if let data = object as? Extractable {
-            let a: CGFloat = try data.value(for: "a")
-            let b: CGFloat = try data.value(for: "b")
-            let c: CGFloat = try data.value(for: "c")
-            let d: CGFloat = try data.value(for: "d")
-            let tx: CGFloat = try data.value(for: "tx")
-            let ty: CGFloat = try data.value(for: "ty")
+            typealias keys = CGAffineTransform.ExtractableKeys
+            
+            let a: CGFloat = try data.value(for: keys.a)
+            let b: CGFloat = try data.value(for: keys.b)
+            let c: CGFloat = try data.value(for: keys.c)
+            let d: CGFloat = try data.value(for: keys.d)
+            let tx: CGFloat = try data.value(for: keys.tx)
+            let ty: CGFloat = try data.value(for: keys.ty)
             
             return CGAffineTransform(a: a, b: b, c: c, d: d, tx: tx, ty: ty)
         }
@@ -41,13 +54,15 @@ extension CGAffineTransform: Value {
 
 extension CGAffineTransform: Serializable {
     public func serialized() -> [String: CGFloat] {
+        typealias keys = CGAffineTransform.ExtractableKeys
+        
         var result = [String: CGFloat]()
-        result["a"] = self.a
-        result["b"] = self.b
-        result["c"] = self.c
-        result["d"] = self.d
-        result["tx"] = self.tx
-        result["ty"] = self.ty
+        result[keys.a] = self.a
+        result[keys.b] = self.b
+        result[keys.c] = self.c
+        result[keys.d] = self.d
+        result[keys.tx] = self.tx
+        result[keys.ty] = self.ty
         
         return result
     }

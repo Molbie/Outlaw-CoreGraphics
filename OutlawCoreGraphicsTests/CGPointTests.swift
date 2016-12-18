@@ -13,12 +13,15 @@ import Outlaw
 
 class CGPointTests: XCTestCase {
     func testExtractableValue() {
-        let rawData: [String: CGFloat] = ["x": 1, "y": 2]
+        typealias keys = CGPoint.ExtractableKeys
+        
+        let rawData: [String: CGFloat] = [keys.x: 1,
+                                          keys.y: 2]
         let data: [String: [String: CGFloat]] = ["point": rawData]
         let point: CGPoint = try! data.value(for: "point")
         
-        XCTAssertEqual(point.x, rawData["x"])
-        XCTAssertEqual(point.y, rawData["y"])
+        XCTAssertEqual(point.x, rawData[keys.x])
+        XCTAssertEqual(point.y, rawData[keys.y])
     }
     
     func testIndexExtractableValue() {
@@ -47,11 +50,13 @@ class CGPointTests: XCTestCase {
     }
     
     func testSerializable() {
+        typealias keys = CGPoint.ExtractableKeys
+        
         let point = CGPoint(x: 1, y: 2)
         let data: [String: CGFloat] = point.serialized()
         
-        XCTAssertEqual(data["x"], point.x)
-        XCTAssertEqual(data["y"], point.y)
+        XCTAssertEqual(data[keys.x], point.x)
+        XCTAssertEqual(data[keys.y], point.y)
     }
     
     func testIndexSerializable() {

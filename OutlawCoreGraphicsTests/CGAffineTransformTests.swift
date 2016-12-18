@@ -13,16 +13,23 @@ import Outlaw
 
 class CGAffineTransformTests: XCTestCase {
     func testExtractableValue() {
-        let rawData: [String: CGFloat] = ["a": 1, "b": 2, "c": 3, "d": 4, "tx": 5, "ty": 6]
+        typealias keys = CGAffineTransform.ExtractableKeys
+        
+        let rawData: [String: CGFloat] = [keys.a: 1,
+                                          keys.b: 2,
+                                          keys.c: 3,
+                                          keys.d: 4,
+                                          keys.tx: 5,
+                                          keys.ty: 6]
         let data: [String: [String: CGFloat]] = ["transform": rawData]
         let transform: CGAffineTransform = try! data.value(for: "transform")
         
-        XCTAssertEqual(transform.a, rawData["a"])
-        XCTAssertEqual(transform.b, rawData["b"])
-        XCTAssertEqual(transform.c, rawData["c"])
-        XCTAssertEqual(transform.d, rawData["d"])
-        XCTAssertEqual(transform.tx, rawData["tx"])
-        XCTAssertEqual(transform.ty, rawData["ty"])
+        XCTAssertEqual(transform.a, rawData[keys.a])
+        XCTAssertEqual(transform.b, rawData[keys.b])
+        XCTAssertEqual(transform.c, rawData[keys.c])
+        XCTAssertEqual(transform.d, rawData[keys.d])
+        XCTAssertEqual(transform.tx, rawData[keys.tx])
+        XCTAssertEqual(transform.ty, rawData[keys.ty])
     }
     
     func testIndexExtractableValue() {
@@ -55,15 +62,17 @@ class CGAffineTransformTests: XCTestCase {
     }
     
     func testSerializable() {
+        typealias keys = CGAffineTransform.ExtractableKeys
+        
         let transform = CGAffineTransform(a: 1, b: 2, c: 3, d: 4, tx: 5, ty: 6)
         let data: [String: CGFloat] = transform.serialized()
         
-        XCTAssertEqual(data["a"], transform.a)
-        XCTAssertEqual(data["b"], transform.b)
-        XCTAssertEqual(data["c"], transform.c)
-        XCTAssertEqual(data["d"], transform.d)
-        XCTAssertEqual(data["tx"], transform.tx)
-        XCTAssertEqual(data["ty"], transform.ty)
+        XCTAssertEqual(data[keys.a], transform.a)
+        XCTAssertEqual(data[keys.b], transform.b)
+        XCTAssertEqual(data[keys.c], transform.c)
+        XCTAssertEqual(data[keys.d], transform.d)
+        XCTAssertEqual(data[keys.tx], transform.tx)
+        XCTAssertEqual(data[keys.ty], transform.ty)
     }
     
     func testIndexSerializable() {

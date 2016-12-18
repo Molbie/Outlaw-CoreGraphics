@@ -13,12 +13,15 @@ import Outlaw
 
 class CGVectorTests: XCTestCase {
     func testExtractableValue() {
-        let rawData: [String: CGFloat] = ["dx": 1, "dy": 2]
+        typealias keys = CGVector.ExtractableKeys
+        
+        let rawData: [String: CGFloat] = [keys.dx: 1,
+                                          keys.dy: 2]
         let data: [String: [String: CGFloat]] = ["vector": rawData]
         let vector: CGVector = try! data.value(for: "vector")
         
-        XCTAssertEqual(vector.dx, rawData["dx"])
-        XCTAssertEqual(vector.dy, rawData["dy"])
+        XCTAssertEqual(vector.dx, rawData[keys.dx])
+        XCTAssertEqual(vector.dy, rawData[keys.dy])
     }
     
     func testIndexExtractableValue() {
@@ -47,11 +50,13 @@ class CGVectorTests: XCTestCase {
     }
     
     func testSerializable() {
+        typealias keys = CGVector.ExtractableKeys
+        
         let vector = CGVector(dx: 1, dy: 2)
         let data: [String: CGFloat] = vector.serialized()
         
-        XCTAssertEqual(data["dx"], vector.dx)
-        XCTAssertEqual(data["dy"], vector.dy)
+        XCTAssertEqual(data[keys.dx], vector.dx)
+        XCTAssertEqual(data[keys.dy], vector.dy)
     }
     
     func testIndexSerializable() {

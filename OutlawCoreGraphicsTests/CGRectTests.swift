@@ -13,14 +13,19 @@ import Outlaw
 
 class CGRectTests: XCTestCase {
     func testExtractableValue() {
-        let rawData: [String: CGFloat] = ["x": 1, "y": 2, "width": 3, "height": 4]
+        typealias keys = CGRect.ExtractableKeys
+        
+        let rawData: [String: CGFloat] = [keys.x: 1,
+                                          keys.y: 2,
+                                          keys.width: 3,
+                                          keys.height: 4]
         let data: [String: [String: CGFloat]] = ["rect": rawData]
         let rect: CGRect = try! data.value(for: "rect")
         
-        XCTAssertEqual(rect.origin.x, rawData["x"])
-        XCTAssertEqual(rect.origin.y, rawData["y"])
-        XCTAssertEqual(rect.width, rawData["width"])
-        XCTAssertEqual(rect.height, rawData["height"])
+        XCTAssertEqual(rect.origin.x, rawData[keys.x])
+        XCTAssertEqual(rect.origin.y, rawData[keys.y])
+        XCTAssertEqual(rect.width, rawData[keys.width])
+        XCTAssertEqual(rect.height, rawData[keys.height])
     }
     
     func testIndexExtractableValue() {
@@ -51,13 +56,15 @@ class CGRectTests: XCTestCase {
     }
     
     func testSerializable() {
+        typealias keys = CGRect.ExtractableKeys
+        
         let rect = CGRect(x: 1, y: 2, width: 3, height: 4)
         let data: [String: CGFloat] = rect.serialized()
         
-        XCTAssertEqual(data["x"], rect.origin.x)
-        XCTAssertEqual(data["y"], rect.origin.y)
-        XCTAssertEqual(data["width"], rect.width)
-        XCTAssertEqual(data["height"], rect.height)
+        XCTAssertEqual(data[keys.x], rect.origin.x)
+        XCTAssertEqual(data[keys.y], rect.origin.y)
+        XCTAssertEqual(data[keys.width], rect.width)
+        XCTAssertEqual(data[keys.height], rect.height)
     }
     
     func testIndexSerializable() {

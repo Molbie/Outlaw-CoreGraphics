@@ -10,13 +10,23 @@ import CoreGraphics
 
 
 public extension CGLineJoin {
+    public struct StringValues {
+        public static let miter = "miter"
+        public static let round = "round"
+        public static let bevel = "bevel"
+    }
+}
+
+public extension CGLineJoin {
     public init?(stringValue: String) {
+        typealias strings = CGLineJoin.StringValues
+        
         switch stringValue.lowercased() {
-            case "miter":
+            case strings.miter:
                 self = .miter
-            case "round":
+            case strings.round:
                 self = .round
-            case "bevel":
+            case strings.bevel:
                 self = .bevel
             default:
                 return nil
@@ -24,15 +34,16 @@ public extension CGLineJoin {
     }
     
     public var stringValue: String {
-        let result: String
+        typealias strings = CGLineJoin.StringValues
         
+        let result: String
         switch self {
             case .miter:
-                result = "miter"
+                result = strings.miter
             case .round:
-                result = "round"
+                result = strings.round
             case .bevel:
-                result = "bevel"
+                result = strings.bevel
         }
         
         return result

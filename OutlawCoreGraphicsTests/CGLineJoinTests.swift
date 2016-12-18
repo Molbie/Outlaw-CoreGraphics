@@ -13,13 +13,15 @@ import Outlaw
 
 class CGLineJoinTests: XCTestCase {
     func testStringInit() {
-        let miter = CGLineJoin(stringValue: "miter")
+        typealias strings = CGLineJoin.StringValues
+        
+        let miter = CGLineJoin(stringValue: strings.miter)
         XCTAssertEqual(miter, .miter)
         
-        let round = CGLineJoin(stringValue: "round")
+        let round = CGLineJoin(stringValue: strings.round)
         XCTAssertEqual(round, .round)
         
-        let bevel = CGLineJoin(stringValue: "bevel")
+        let bevel = CGLineJoin(stringValue: strings.bevel)
         XCTAssertEqual(bevel, .bevel)
         
         let invalid = CGLineJoin(stringValue: "invalid")
@@ -27,13 +29,15 @@ class CGLineJoinTests: XCTestCase {
     }
     
     func testUpperStringInit() {
-        let miter = CGLineJoin(stringValue: "MITER")
+        typealias strings = CGLineJoin.StringValues
+        
+        let miter = CGLineJoin(stringValue: strings.miter.uppercased())
         XCTAssertEqual(miter, .miter)
         
-        let round = CGLineJoin(stringValue: "ROUND")
+        let round = CGLineJoin(stringValue: strings.round.uppercased())
         XCTAssertEqual(round, .round)
         
-        let bevel = CGLineJoin(stringValue: "BEVEL")
+        let bevel = CGLineJoin(stringValue: strings.bevel.uppercased())
         XCTAssertEqual(bevel, .bevel)
         
         let invalid = CGLineJoin(stringValue: "INVALID")
@@ -41,13 +45,15 @@ class CGLineJoinTests: XCTestCase {
     }
     
     func testStringValue() {
+        typealias strings = CGLineJoin.StringValues
+        
         let miter = CGLineJoin.miter
-        XCTAssertEqual(miter.stringValue, "miter")
+        XCTAssertEqual(miter.stringValue, strings.miter)
         
         let round = CGLineJoin.round
-        XCTAssertEqual(round.stringValue, "round")
+        XCTAssertEqual(round.stringValue, strings.round)
         
         let bevel = CGLineJoin.bevel
-        XCTAssertEqual(bevel.stringValue, "bevel")
+        XCTAssertEqual(bevel.stringValue, strings.bevel)
     }
 }

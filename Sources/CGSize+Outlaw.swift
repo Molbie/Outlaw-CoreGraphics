@@ -10,11 +10,20 @@ import CoreGraphics
 import Outlaw
 
 
+public extension CGSize {
+    public struct ExtractableKeys {
+        public static let width = "width"
+        public static let height = "height"
+    }
+}
+
 extension CGSize: Value {
     public static func value(from object: Any) throws -> CGSize {
         if let data = object as? Extractable {
-            let width: CGFloat = try data.value(for: "width")
-            let height: CGFloat = try data.value(for: "height")
+            typealias keys = CGSize.ExtractableKeys
+            
+            let width: CGFloat = try data.value(for: keys.width)
+            let height: CGFloat = try data.value(for: keys.height)
             
             return CGSize(width: width, height: height)
         }
@@ -33,9 +42,11 @@ extension CGSize: Value {
 
 extension CGSize: Serializable {
     public func serialized() -> [String: CGFloat] {
+        typealias keys = CGSize.ExtractableKeys
+        
         var result = [String: CGFloat]()
-        result["width"] = self.width
-        result["height"] = self.height
+        result[keys.width] = self.width
+        result[keys.height] = self.height
         
         return result
     }

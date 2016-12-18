@@ -10,11 +10,20 @@ import CoreGraphics
 import Outlaw
 
 
+public extension CGVector {
+    public struct ExtractableKeys {
+        public static let dx = "dx"
+        public static let dy = "dy"
+    }
+}
+
 extension CGVector: Value {
     public static func value(from object: Any) throws -> CGVector {
         if let data = object as? Extractable {
-            let dx: CGFloat = try data.value(for: "dx")
-            let dy: CGFloat = try data.value(for: "dy")
+            typealias keys = CGVector.ExtractableKeys
+            
+            let dx: CGFloat = try data.value(for: keys.dx)
+            let dy: CGFloat = try data.value(for: keys.dy)
             
             return CGVector(dx: dx, dy: dy)
         }
@@ -33,9 +42,11 @@ extension CGVector: Value {
 
 extension CGVector: Serializable {
     public func serialized() -> [String: CGFloat] {
+        typealias keys = CGVector.ExtractableKeys
+        
         var result = [String: CGFloat]()
-        result["dx"] = self.dx
-        result["dy"] = self.dy
+        result[keys.dx] = self.dx
+        result[keys.dy] = self.dy
         
         return result
     }

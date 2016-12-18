@@ -10,11 +10,20 @@ import CoreGraphics
 import Outlaw
 
 
+public extension CGPoint {
+    public struct ExtractableKeys {
+        public static let x = "x"
+        public static let y = "y"
+    }
+}
+
 extension CGPoint: Value {
     public static func value(from object: Any) throws -> CGPoint {
         if let data = object as? Extractable {
-            let x: CGFloat = try data.value(for: "x")
-            let y: CGFloat = try data.value(for: "y")
+            typealias keys = CGPoint.ExtractableKeys
+            
+            let x: CGFloat = try data.value(for: keys.x)
+            let y: CGFloat = try data.value(for: keys.y)
             
             return CGPoint(x: x, y: y)
         }
@@ -33,9 +42,11 @@ extension CGPoint: Value {
 
 extension CGPoint: Serializable {
     public func serialized() -> [String: CGFloat] {
+        typealias keys = CGPoint.ExtractableKeys
+        
         var result = [String: CGFloat]()
-        result["x"] = self.x
-        result["y"] = self.y
+        result[keys.x] = self.x
+        result[keys.y] = self.y
         
         return result
     }
