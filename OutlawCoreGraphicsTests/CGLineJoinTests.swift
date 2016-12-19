@@ -12,9 +12,9 @@ import Outlaw
 
 
 class CGLineJoinTests: XCTestCase {
+    fileprivate typealias strings = CGLineJoin.StringValues
+    
     func testStringInit() {
-        typealias strings = CGLineJoin.StringValues
-        
         let miter = CGLineJoin(stringValue: strings.miter)
         XCTAssertEqual(miter, .miter)
         
@@ -29,8 +29,6 @@ class CGLineJoinTests: XCTestCase {
     }
     
     func testUpperStringInit() {
-        typealias strings = CGLineJoin.StringValues
-        
         let miter = CGLineJoin(stringValue: strings.miter.uppercased())
         XCTAssertEqual(miter, .miter)
         
@@ -45,8 +43,6 @@ class CGLineJoinTests: XCTestCase {
     }
     
     func testStringValue() {
-        typealias strings = CGLineJoin.StringValues
-        
         let miter = CGLineJoin.miter
         XCTAssertEqual(miter.stringValue, strings.miter)
         

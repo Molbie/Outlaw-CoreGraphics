@@ -12,9 +12,10 @@ import Outlaw
 
 
 class CGAffineTransformTests: XCTestCase {
+    fileprivate typealias keys = CGAffineTransform.ExtractableKeys
+    fileprivate typealias indexes = CGAffineTransform.ExtractableIndexes
+    
     func testExtractableValue() {
-        typealias keys = CGAffineTransform.ExtractableKeys
-        
         let rawData: [String: CGFloat] = [keys.a: 1,
                                           keys.b: 2,
                                           keys.c: 3,
@@ -33,8 +34,6 @@ class CGAffineTransformTests: XCTestCase {
     }
     
     func testIndexExtractableValue() {
-        typealias indexes = CGAffineTransform.ExtractableIndexes
-        
         var rawData = [CGFloat](repeating: 0, count: 6)
         rawData[indexes.a] = 1
         rawData[indexes.b] = 2
@@ -71,8 +70,6 @@ class CGAffineTransformTests: XCTestCase {
     }
     
     func testSerializable() {
-        typealias keys = CGAffineTransform.ExtractableKeys
-        
         let transform = CGAffineTransform(a: 1, b: 2, c: 3, d: 4, tx: 5, ty: 6)
         let data = transform.serialized()
         
@@ -85,8 +82,6 @@ class CGAffineTransformTests: XCTestCase {
     }
     
     func testIndexSerializable() {
-        typealias indexes = CGAffineTransform.ExtractableIndexes
-        
         let transform = CGAffineTransform(a: 1, b: 2, c: 3, d: 4, tx: 5, ty: 6)
         let data = transform.serializedIndexes()
         

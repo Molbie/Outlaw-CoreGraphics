@@ -15,12 +15,11 @@ public extension CGLineJoin {
         public static let round = "round"
         public static let bevel = "bevel"
     }
+    fileprivate typealias strings = CGLineJoin.StringValues
 }
 
 public extension CGLineJoin {
     public init?(stringValue: String) {
-        typealias strings = CGLineJoin.StringValues
-        
         switch stringValue.lowercased() {
             case strings.miter:
                 self = .miter
@@ -34,8 +33,6 @@ public extension CGLineJoin {
     }
     
     public var stringValue: String {
-        typealias strings = CGLineJoin.StringValues
-        
         let result: String
         switch self {
             case .miter:

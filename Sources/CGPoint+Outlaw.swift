@@ -19,21 +19,19 @@ public extension CGPoint {
         public static let x: Int = 0
         public static let y: Int = 1
     }
+    fileprivate typealias keys = CGPoint.ExtractableKeys
+    fileprivate typealias indexes = CGPoint.ExtractableIndexes
 }
 
 extension CGPoint: Value {
     public static func value(from object: Any) throws -> CGPoint {
         if let data = object as? Extractable {
-            typealias keys = CGPoint.ExtractableKeys
-            
             let x: CGFloat = try data.value(for: keys.x)
             let y: CGFloat = try data.value(for: keys.y)
             
             return CGPoint(x: x, y: y)
         }
         else if let data = object as? IndexExtractable {
-            typealias indexes = CGPoint.ExtractableIndexes
-            
             let x: CGFloat = try data.value(for: indexes.x)
             let y: CGFloat = try data.value(for: indexes.y)
             
@@ -48,8 +46,6 @@ extension CGPoint: Value {
 
 extension CGPoint: Serializable {
     public func serialized() -> [String: CGFloat] {
-        typealias keys = CGPoint.ExtractableKeys
-        
         var result = [String: CGFloat]()
         result[keys.x] = self.x
         result[keys.y] = self.y
@@ -60,8 +56,6 @@ extension CGPoint: Serializable {
 
 extension CGPoint: IndexSerializable {
     public func serializedIndexes() -> [CGFloat] {
-        typealias indexes = CGPoint.ExtractableIndexes
-        
         var result = [CGFloat](repeating: 0, count: 2)
         result[indexes.x] = self.x
         result[indexes.y] = self.y

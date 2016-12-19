@@ -15,12 +15,11 @@ public extension CGLineCap {
         public static let round = "round"
         public static let square = "square"
     }
+    fileprivate typealias strings = CGLineCap.StringValues
 }
 
 public extension CGLineCap {
     public init?(stringValue: String) {
-        typealias strings = CGLineCap.StringValues
-        
         switch stringValue.lowercased() {
             case strings.butt:
                 self = .butt
@@ -34,8 +33,6 @@ public extension CGLineCap {
     }
     
     public var stringValue: String {
-        typealias strings = CGLineCap.StringValues
-        
         let result: String
         switch self {
             case .butt:

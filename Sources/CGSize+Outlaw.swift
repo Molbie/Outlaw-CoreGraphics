@@ -19,21 +19,19 @@ public extension CGSize {
         public static let width: Int = 0
         public static let height: Int = 1
     }
+    fileprivate typealias keys = CGSize.ExtractableKeys
+    fileprivate typealias indexes = CGSize.ExtractableIndexes
 }
 
 extension CGSize: Value {
     public static func value(from object: Any) throws -> CGSize {
         if let data = object as? Extractable {
-            typealias keys = CGSize.ExtractableKeys
-            
             let width: CGFloat = try data.value(for: keys.width)
             let height: CGFloat = try data.value(for: keys.height)
             
             return CGSize(width: width, height: height)
         }
         else if let data = object as? IndexExtractable {
-            typealias indexes = CGSize.ExtractableIndexes
-            
             let width: CGFloat = try data.value(for: indexes.width)
             let height: CGFloat = try data.value(for: indexes.height)
             
@@ -48,8 +46,6 @@ extension CGSize: Value {
 
 extension CGSize: Serializable {
     public func serialized() -> [String: CGFloat] {
-        typealias keys = CGSize.ExtractableKeys
-        
         var result = [String: CGFloat]()
         result[keys.width] = self.width
         result[keys.height] = self.height
@@ -60,8 +56,6 @@ extension CGSize: Serializable {
 
 extension CGSize: IndexSerializable {
     public func serializedIndexes() -> [CGFloat] {
-        typealias indexes = CGSize.ExtractableIndexes
-        
         var result = [CGFloat](repeating: 0, count: 2)
         result[indexes.width] = self.width
         result[indexes.height] = self.height

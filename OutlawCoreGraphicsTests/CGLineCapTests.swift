@@ -12,9 +12,9 @@ import Outlaw
 
 
 class CGLineCapTests: XCTestCase {
+    fileprivate typealias strings = CGLineCap.StringValues
+    
     func testStringInit() {
-        typealias strings = CGLineCap.StringValues
-        
         let butt = CGLineCap(stringValue: strings.butt)
         XCTAssertEqual(butt, .butt)
         
@@ -29,8 +29,6 @@ class CGLineCapTests: XCTestCase {
     }
     
     func testUpperStringInit() {
-        typealias strings = CGLineCap.StringValues
-        
         let butt = CGLineCap(stringValue: strings.butt.uppercased())
         XCTAssertEqual(butt, .butt)
         
@@ -45,8 +43,6 @@ class CGLineCapTests: XCTestCase {
     }
     
     func testStringValue() {
-        typealias strings = CGLineCap.StringValues
-        
         let butt = CGLineCap.butt
         XCTAssertEqual(butt.stringValue, strings.butt)
         

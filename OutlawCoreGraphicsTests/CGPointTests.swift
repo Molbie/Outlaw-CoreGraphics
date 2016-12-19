@@ -12,9 +12,10 @@ import Outlaw
 
 
 class CGPointTests: XCTestCase {
+    fileprivate typealias keys = CGPoint.ExtractableKeys
+    fileprivate typealias indexes = CGPoint.ExtractableIndexes
+    
     func testExtractableValue() {
-        typealias keys = CGPoint.ExtractableKeys
-        
         let rawData: [String: CGFloat] = [keys.x: 1,
                                           keys.y: 2]
         let data: [String: [String: CGFloat]] = ["point": rawData]
@@ -25,8 +26,6 @@ class CGPointTests: XCTestCase {
     }
     
     func testIndexExtractableValue() {
-        typealias indexes = CGPoint.ExtractableIndexes
-        
         var rawData = [CGFloat](repeating: 0, count: 2)
         rawData[indexes.x] = 1
         rawData[indexes.y] = 2
@@ -55,8 +54,6 @@ class CGPointTests: XCTestCase {
     }
     
     func testSerializable() {
-        typealias keys = CGPoint.ExtractableKeys
-        
         let point = CGPoint(x: 1, y: 2)
         let data = point.serialized()
         
@@ -65,8 +62,6 @@ class CGPointTests: XCTestCase {
     }
     
     func testIndexSerializable() {
-        typealias indexes = CGPoint.ExtractableIndexes
-        
         let point = CGPoint(x: 1, y: 2)
         let data = point.serializedIndexes()
         

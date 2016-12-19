@@ -27,13 +27,13 @@ public extension CGAffineTransform {
         public static let tx: Int = 4
         public static let ty: Int = 5
     }
+    fileprivate typealias keys = CGAffineTransform.ExtractableKeys
+    fileprivate typealias indexes = CGAffineTransform.ExtractableIndexes
 }
 
 extension CGAffineTransform: Value {
     public static func value(from object: Any) throws -> CGAffineTransform {
         if let data = object as? Extractable {
-            typealias keys = CGAffineTransform.ExtractableKeys
-            
             let a: CGFloat = try data.value(for: keys.a)
             let b: CGFloat = try data.value(for: keys.b)
             let c: CGFloat = try data.value(for: keys.c)
@@ -44,8 +44,6 @@ extension CGAffineTransform: Value {
             return CGAffineTransform(a: a, b: b, c: c, d: d, tx: tx, ty: ty)
         }
         else if let data = object as? IndexExtractable {
-            typealias indexes = CGAffineTransform.ExtractableIndexes
-            
             let a: CGFloat = try data.value(for: indexes.a)
             let b: CGFloat = try data.value(for: indexes.b)
             let c: CGFloat = try data.value(for: indexes.c)
@@ -64,8 +62,6 @@ extension CGAffineTransform: Value {
 
 extension CGAffineTransform: Serializable {
     public func serialized() -> [String: CGFloat] {
-        typealias keys = CGAffineTransform.ExtractableKeys
-        
         var result = [String: CGFloat]()
         result[keys.a] = self.a
         result[keys.b] = self.b
@@ -80,8 +76,6 @@ extension CGAffineTransform: Serializable {
 
 extension CGAffineTransform: IndexSerializable {
     public func serializedIndexes() -> [CGFloat] {
-        typealias indexes = CGAffineTransform.ExtractableIndexes
-        
         var result = [CGFloat](repeating: 0, count: 6)
         result[indexes.a] = self.a
         result[indexes.b] = self.b

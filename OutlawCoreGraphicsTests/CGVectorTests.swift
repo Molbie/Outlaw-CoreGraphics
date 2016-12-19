@@ -12,9 +12,10 @@ import Outlaw
 
 
 class CGVectorTests: XCTestCase {
+    fileprivate typealias keys = CGVector.ExtractableKeys
+    fileprivate typealias indexes = CGVector.ExtractableIndexes
+    
     func testExtractableValue() {
-        typealias keys = CGVector.ExtractableKeys
-        
         let rawData: [String: CGFloat] = [keys.dx: 1,
                                           keys.dy: 2]
         let data: [String: [String: CGFloat]] = ["vector": rawData]
@@ -25,8 +26,6 @@ class CGVectorTests: XCTestCase {
     }
     
     func testIndexExtractableValue() {
-        typealias indexes = CGVector.ExtractableIndexes
-        
         var rawData = [CGFloat](repeating: 0, count: 2)
         rawData[indexes.dx] = 1
         rawData[indexes.dy] = 2
@@ -55,8 +54,6 @@ class CGVectorTests: XCTestCase {
     }
     
     func testSerializable() {
-        typealias keys = CGVector.ExtractableKeys
-        
         let vector = CGVector(dx: 1, dy: 2)
         let data = vector.serialized()
         
@@ -65,8 +62,6 @@ class CGVectorTests: XCTestCase {
     }
     
     func testIndexSerializable() {
-        typealias indexes = CGVector.ExtractableIndexes
-        
         let vector = CGVector(dx: 1, dy: 2)
         let data = vector.serializedIndexes()
         

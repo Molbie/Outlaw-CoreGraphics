@@ -23,13 +23,13 @@ public extension CGRect {
         public static let width: Int = 2
         public static let height: Int = 3
     }
+    fileprivate typealias keys = CGRect.ExtractableKeys
+    fileprivate typealias indexes = CGRect.ExtractableIndexes
 }
 
 extension CGRect: Value {
     public static func value(from object: Any) throws -> CGRect {
         if let data = object as? Extractable {
-            typealias keys = CGRect.ExtractableKeys
-            
             let x: CGFloat = try data.value(for: keys.x)
             let y: CGFloat = try data.value(for: keys.y)
             let width: CGFloat = try data.value(for: keys.width)
@@ -38,8 +38,6 @@ extension CGRect: Value {
             return CGRect(x: x, y: y, width: width, height: height)
         }
         else if let data = object as? IndexExtractable {
-            typealias indexes = CGRect.ExtractableIndexes
-            
             let x: CGFloat = try data.value(for: indexes.x)
             let y: CGFloat = try data.value(for: indexes.y)
             let width: CGFloat = try data.value(for: indexes.width)
@@ -56,8 +54,6 @@ extension CGRect: Value {
 
 extension CGRect: Serializable {
     public func serialized() -> [String: CGFloat] {
-        typealias keys = CGRect.ExtractableKeys
-        
         var result = [String: CGFloat]()
         result[keys.x] = self.origin.x
         result[keys.y] = self.origin.y
@@ -70,8 +66,6 @@ extension CGRect: Serializable {
 
 extension CGRect: IndexSerializable {
     public func serializedIndexes() -> [CGFloat] {
-        typealias indexes = CGRect.ExtractableIndexes
-        
         var result = [CGFloat](repeating: 0, count: 4)
         result[indexes.x] = self.origin.x
         result[indexes.y] = self.origin.y
