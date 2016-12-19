@@ -25,12 +25,17 @@ class CGPointTests: XCTestCase {
     }
     
     func testIndexExtractableValue() {
-        let rawData: [CGFloat] = [1, 2]
+        typealias indexes = CGPoint.ExtractableIndexes
+        
+        var rawData = [CGFloat](repeating: 0, count: 2)
+        rawData[indexes.x] = 1
+        rawData[indexes.y] = 2
+        
         let data: [[CGFloat]] = [rawData]
         let point: CGPoint = try! data.value(for: 0)
         
-        XCTAssertEqual(point.x, rawData[0])
-        XCTAssertEqual(point.y, rawData[1])
+        XCTAssertEqual(point.x, rawData[indexes.x])
+        XCTAssertEqual(point.y, rawData[indexes.y])
     }
     
     func testInvalidValue() {
@@ -60,10 +65,12 @@ class CGPointTests: XCTestCase {
     }
     
     func testIndexSerializable() {
+        typealias indexes = CGPoint.ExtractableIndexes
+        
         let point = CGPoint(x: 1, y: 2)
         let data: [CGFloat] = point.serialized()
         
-        XCTAssertEqual(data[0], point.x)
-        XCTAssertEqual(data[1], point.y)
+        XCTAssertEqual(data[indexes.x], point.x)
+        XCTAssertEqual(data[indexes.y], point.y)
     }
 }

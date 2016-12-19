@@ -19,6 +19,14 @@ public extension CGAffineTransform {
         public static let tx = "tx"
         public static let ty = "ty"
     }
+    public struct ExtractableIndexes {
+        public static let a: Int = 0
+        public static let b: Int = 1
+        public static let c: Int = 2
+        public static let d: Int = 3
+        public static let tx: Int = 4
+        public static let ty: Int = 5
+    }
 }
 
 extension CGAffineTransform: Value {
@@ -36,12 +44,14 @@ extension CGAffineTransform: Value {
             return CGAffineTransform(a: a, b: b, c: c, d: d, tx: tx, ty: ty)
         }
         else if let data = object as? IndexExtractable {
-            let a: CGFloat = try data.value(for: 0)
-            let b: CGFloat = try data.value(for: 1)
-            let c: CGFloat = try data.value(for: 2)
-            let d: CGFloat = try data.value(for: 3)
-            let tx: CGFloat = try data.value(for: 4)
-            let ty: CGFloat = try data.value(for: 5)
+            typealias indexes = CGAffineTransform.ExtractableIndexes
+            
+            let a: CGFloat = try data.value(for: indexes.a)
+            let b: CGFloat = try data.value(for: indexes.b)
+            let c: CGFloat = try data.value(for: indexes.c)
+            let d: CGFloat = try data.value(for: indexes.d)
+            let tx: CGFloat = try data.value(for: indexes.tx)
+            let ty: CGFloat = try data.value(for: indexes.ty)
             
             return CGAffineTransform(a: a, b: b, c: c, d: d, tx: tx, ty: ty)
         }
@@ -70,6 +80,16 @@ extension CGAffineTransform: Serializable {
 
 extension CGAffineTransform: IndexSerializable {
     public func serialized() -> [CGFloat] {
-        return [self.a, self.b, self.c, self.d, self.tx, self.ty]
+        typealias indexes = CGAffineTransform.ExtractableIndexes
+        
+        var result = [CGFloat](repeating: 0, count: 6)
+        result[indexes.a] = self.a
+        result[indexes.b] = self.b
+        result[indexes.c] = self.c
+        result[indexes.d] = self.d
+        result[indexes.tx] = self.tx
+        result[indexes.ty] = self.ty
+        
+        return result
     }
 }

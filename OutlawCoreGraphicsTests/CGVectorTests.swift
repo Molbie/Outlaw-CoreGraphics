@@ -25,12 +25,17 @@ class CGVectorTests: XCTestCase {
     }
     
     func testIndexExtractableValue() {
-        let rawData: [CGFloat] = [1, 2]
+        typealias indexes = CGVector.ExtractableIndexes
+        
+        var rawData = [CGFloat](repeating: 0, count: 2)
+        rawData[indexes.dx] = 1
+        rawData[indexes.dy] = 2
+        
         let data: [[CGFloat]] = [rawData]
         let vector: CGVector = try! data.value(for: 0)
         
-        XCTAssertEqual(vector.dx, rawData[0])
-        XCTAssertEqual(vector.dy, rawData[1])
+        XCTAssertEqual(vector.dx, rawData[indexes.dx])
+        XCTAssertEqual(vector.dy, rawData[indexes.dy])
     }
     
     func testInvalidValue() {
@@ -60,10 +65,12 @@ class CGVectorTests: XCTestCase {
     }
     
     func testIndexSerializable() {
+        typealias indexes = CGVector.ExtractableIndexes
+        
         let vector = CGVector(dx: 1, dy: 2)
         let data: [CGFloat] = vector.serialized()
         
-        XCTAssertEqual(data[0], vector.dx)
-        XCTAssertEqual(data[1], vector.dy)
+        XCTAssertEqual(data[indexes.dx], vector.dx)
+        XCTAssertEqual(data[indexes.dy], vector.dy)
     }
 }

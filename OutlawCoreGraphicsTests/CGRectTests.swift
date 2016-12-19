@@ -29,14 +29,21 @@ class CGRectTests: XCTestCase {
     }
     
     func testIndexExtractableValue() {
-        let rawData: [CGFloat] = [1, 2, 3, 4]
+        typealias indexes = CGRect.ExtractableIndexes
+        
+        var rawData = [CGFloat](repeating: 0, count: 4)
+        rawData[indexes.x] = 1
+        rawData[indexes.y] = 2
+        rawData[indexes.width] = 3
+        rawData[indexes.height] = 4
+        
         let data: [[CGFloat]] = [rawData]
         let rect: CGRect = try! data.value(for: 0)
         
-        XCTAssertEqual(rect.origin.x, rawData[0])
-        XCTAssertEqual(rect.origin.y, rawData[1])
-        XCTAssertEqual(rect.width, rawData[2])
-        XCTAssertEqual(rect.height, rawData[3])
+        XCTAssertEqual(rect.origin.x, rawData[indexes.x])
+        XCTAssertEqual(rect.origin.y, rawData[indexes.y])
+        XCTAssertEqual(rect.width, rawData[indexes.width])
+        XCTAssertEqual(rect.height, rawData[indexes.height])
     }
     
     func testInvalidValue() {
@@ -68,12 +75,14 @@ class CGRectTests: XCTestCase {
     }
     
     func testIndexSerializable() {
+        typealias indexes = CGRect.ExtractableIndexes
+        
         let rect = CGRect(x: 1, y: 2, width: 3, height: 4)
         let data: [CGFloat] = rect.serialized()
         
-        XCTAssertEqual(data[0], rect.origin.x)
-        XCTAssertEqual(data[1], rect.origin.y)
-        XCTAssertEqual(data[2], rect.width)
-        XCTAssertEqual(data[3], rect.height)
+        XCTAssertEqual(data[indexes.x], rect.origin.x)
+        XCTAssertEqual(data[indexes.y], rect.origin.y)
+        XCTAssertEqual(data[indexes.width], rect.width)
+        XCTAssertEqual(data[indexes.height], rect.height)
     }
 }

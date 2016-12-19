@@ -15,6 +15,10 @@ public extension CGSize {
         public static let width = "width"
         public static let height = "height"
     }
+    public struct ExtractableIndexes {
+        public static let width: Int = 0
+        public static let height: Int = 1
+    }
 }
 
 extension CGSize: Value {
@@ -28,8 +32,10 @@ extension CGSize: Value {
             return CGSize(width: width, height: height)
         }
         else if let data = object as? IndexExtractable {
-            let width: CGFloat = try data.value(for: 0)
-            let height: CGFloat = try data.value(for: 1)
+            typealias indexes = CGSize.ExtractableIndexes
+            
+            let width: CGFloat = try data.value(for: indexes.width)
+            let height: CGFloat = try data.value(for: indexes.height)
             
             return CGSize(width: width, height: height)
         }
@@ -54,6 +60,12 @@ extension CGSize: Serializable {
 
 extension CGSize: IndexSerializable {
     public func serialized() -> [CGFloat] {
-        return [self.width, self.height]
+        typealias indexes = CGSize.ExtractableIndexes
+        
+        var result = [CGFloat](repeating: 0, count: 2)
+        result[indexes.width] = self.width
+        result[indexes.height] = self.height
+        
+        return result
     }
 }

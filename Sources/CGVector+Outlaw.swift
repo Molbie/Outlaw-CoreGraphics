@@ -15,6 +15,10 @@ public extension CGVector {
         public static let dx = "dx"
         public static let dy = "dy"
     }
+    public struct ExtractableIndexes {
+        public static let dx: Int = 0
+        public static let dy: Int = 1
+    }
 }
 
 extension CGVector: Value {
@@ -28,8 +32,10 @@ extension CGVector: Value {
             return CGVector(dx: dx, dy: dy)
         }
         else if let data = object as? IndexExtractable {
-            let dx: CGFloat = try data.value(for: 0)
-            let dy: CGFloat = try data.value(for: 1)
+            typealias indexes = CGVector.ExtractableIndexes
+            
+            let dx: CGFloat = try data.value(for: indexes.dx)
+            let dy: CGFloat = try data.value(for: indexes.dy)
             
             return CGVector(dx: dx, dy: dy)
         }
@@ -54,6 +60,12 @@ extension CGVector: Serializable {
 
 extension CGVector: IndexSerializable {
     public func serialized() -> [CGFloat] {
-        return [self.dx, self.dy]
+        typealias indexes = CGVector.ExtractableIndexes
+        
+        var result = [CGFloat](repeating: 0, count: 2)
+        result[indexes.dx] = self.dx
+        result[indexes.dy] = self.dy
+        
+        return result
     }
 }

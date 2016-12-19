@@ -33,16 +33,25 @@ class CGAffineTransformTests: XCTestCase {
     }
     
     func testIndexExtractableValue() {
-        let rawData: [CGFloat] = [1, 2, 3, 4, 5, 6]
+        typealias indexes = CGAffineTransform.ExtractableIndexes
+        
+        var rawData = [CGFloat](repeating: 0, count: 6)
+        rawData[indexes.a] = 1
+        rawData[indexes.b] = 2
+        rawData[indexes.c] = 3
+        rawData[indexes.d] = 4
+        rawData[indexes.tx] = 5
+        rawData[indexes.ty] = 6
+        
         let data: [[CGFloat]] = [rawData]
         let transform: CGAffineTransform = try! data.value(for: 0)
         
-        XCTAssertEqual(transform.a, rawData[0])
-        XCTAssertEqual(transform.b, rawData[1])
-        XCTAssertEqual(transform.c, rawData[2])
-        XCTAssertEqual(transform.d, rawData[3])
-        XCTAssertEqual(transform.tx, rawData[4])
-        XCTAssertEqual(transform.ty, rawData[5])
+        XCTAssertEqual(transform.a, rawData[indexes.a])
+        XCTAssertEqual(transform.b, rawData[indexes.b])
+        XCTAssertEqual(transform.c, rawData[indexes.c])
+        XCTAssertEqual(transform.d, rawData[indexes.d])
+        XCTAssertEqual(transform.tx, rawData[indexes.tx])
+        XCTAssertEqual(transform.ty, rawData[indexes.ty])
     }
     
     func testInvalidValue() {
@@ -76,14 +85,16 @@ class CGAffineTransformTests: XCTestCase {
     }
     
     func testIndexSerializable() {
+        typealias indexes = CGAffineTransform.ExtractableIndexes
+        
         let transform = CGAffineTransform(a: 1, b: 2, c: 3, d: 4, tx: 5, ty: 6)
         let data: [CGFloat] = transform.serialized()
         
-        XCTAssertEqual(data[0], transform.a)
-        XCTAssertEqual(data[1], transform.b)
-        XCTAssertEqual(data[2], transform.c)
-        XCTAssertEqual(data[3], transform.d)
-        XCTAssertEqual(data[4], transform.tx)
-        XCTAssertEqual(data[5], transform.ty)
+        XCTAssertEqual(data[indexes.a], transform.a)
+        XCTAssertEqual(data[indexes.b], transform.b)
+        XCTAssertEqual(data[indexes.c], transform.c)
+        XCTAssertEqual(data[indexes.d], transform.d)
+        XCTAssertEqual(data[indexes.tx], transform.tx)
+        XCTAssertEqual(data[indexes.ty], transform.ty)
     }
 }
