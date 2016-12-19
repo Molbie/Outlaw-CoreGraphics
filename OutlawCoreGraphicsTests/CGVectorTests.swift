@@ -58,7 +58,7 @@ class CGVectorTests: XCTestCase {
         typealias keys = CGVector.ExtractableKeys
         
         let vector = CGVector(dx: 1, dy: 2)
-        let data: [String: CGFloat] = vector.serialized()
+        let data = vector.serialized()
         
         XCTAssertEqual(data[keys.dx], vector.dx)
         XCTAssertEqual(data[keys.dy], vector.dy)
@@ -68,7 +68,7 @@ class CGVectorTests: XCTestCase {
         typealias indexes = CGVector.ExtractableIndexes
         
         let vector = CGVector(dx: 1, dy: 2)
-        let data: [CGFloat] = vector.serialized()
+        let data = vector.serializedIndexes()
         
         XCTAssertEqual(data[indexes.dx], vector.dx)
         XCTAssertEqual(data[indexes.dy], vector.dy)

@@ -74,7 +74,7 @@ class CGAffineTransformTests: XCTestCase {
         typealias keys = CGAffineTransform.ExtractableKeys
         
         let transform = CGAffineTransform(a: 1, b: 2, c: 3, d: 4, tx: 5, ty: 6)
-        let data: [String: CGFloat] = transform.serialized()
+        let data = transform.serialized()
         
         XCTAssertEqual(data[keys.a], transform.a)
         XCTAssertEqual(data[keys.b], transform.b)
@@ -88,7 +88,7 @@ class CGAffineTransformTests: XCTestCase {
         typealias indexes = CGAffineTransform.ExtractableIndexes
         
         let transform = CGAffineTransform(a: 1, b: 2, c: 3, d: 4, tx: 5, ty: 6)
-        let data: [CGFloat] = transform.serialized()
+        let data = transform.serializedIndexes()
         
         XCTAssertEqual(data[indexes.a], transform.a)
         XCTAssertEqual(data[indexes.b], transform.b)

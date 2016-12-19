@@ -69,7 +69,7 @@ extension CGRect: Serializable {
 }
 
 extension CGRect: IndexSerializable {
-    public func serialized() -> [CGFloat] {
+    public func serializedIndexes() -> [CGFloat] {
         typealias indexes = CGRect.ExtractableIndexes
         
         var result = [CGFloat](repeating: 0, count: 4)

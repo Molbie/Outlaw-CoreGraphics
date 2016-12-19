@@ -58,7 +58,7 @@ class CGSizeTests: XCTestCase {
         typealias keys = CGSize.ExtractableKeys
         
         let size = CGSize(width: 1, height: 2)
-        let data: [String: CGFloat] = size.serialized()
+        let data = size.serialized()
         
         XCTAssertEqual(data[keys.width], size.width)
         XCTAssertEqual(data[keys.height], size.height)
@@ -68,7 +68,7 @@ class CGSizeTests: XCTestCase {
         typealias indexes = CGSize.ExtractableIndexes
         
         let size = CGSize(width: 1, height: 2)
-        let data: [CGFloat] = size.serialized()
+        let data = size.serializedIndexes()
         
         XCTAssertEqual(data[indexes.width], size.width)
         XCTAssertEqual(data[indexes.height], size.height)

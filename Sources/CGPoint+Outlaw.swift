@@ -59,7 +59,7 @@ extension CGPoint: Serializable {
 }
 
 extension CGPoint: IndexSerializable {
-    public func serialized() -> [CGFloat] {
+    public func serializedIndexes() -> [CGFloat] {
         typealias indexes = CGPoint.ExtractableIndexes
         
         var result = [CGFloat](repeating: 0, count: 2)

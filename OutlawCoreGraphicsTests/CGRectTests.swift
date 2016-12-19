@@ -66,7 +66,7 @@ class CGRectTests: XCTestCase {
         typealias keys = CGRect.ExtractableKeys
         
         let rect = CGRect(x: 1, y: 2, width: 3, height: 4)
-        let data: [String: CGFloat] = rect.serialized()
+        let data = rect.serialized()
         
         XCTAssertEqual(data[keys.x], rect.origin.x)
         XCTAssertEqual(data[keys.y], rect.origin.y)
@@ -78,7 +78,7 @@ class CGRectTests: XCTestCase {
         typealias indexes = CGRect.ExtractableIndexes
         
         let rect = CGRect(x: 1, y: 2, width: 3, height: 4)
-        let data: [CGFloat] = rect.serialized()
+        let data = rect.serializedIndexes()
         
         XCTAssertEqual(data[indexes.x], rect.origin.x)
         XCTAssertEqual(data[indexes.y], rect.origin.y)

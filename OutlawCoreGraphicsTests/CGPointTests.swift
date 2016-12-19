@@ -58,7 +58,7 @@ class CGPointTests: XCTestCase {
         typealias keys = CGPoint.ExtractableKeys
         
         let point = CGPoint(x: 1, y: 2)
-        let data: [String: CGFloat] = point.serialized()
+        let data = point.serialized()
         
         XCTAssertEqual(data[keys.x], point.x)
         XCTAssertEqual(data[keys.y], point.y)
@@ -68,7 +68,7 @@ class CGPointTests: XCTestCase {
         typealias indexes = CGPoint.ExtractableIndexes
         
         let point = CGPoint(x: 1, y: 2)
-        let data: [CGFloat] = point.serialized()
+        let data = point.serializedIndexes()
         
         XCTAssertEqual(data[indexes.x], point.x)
         XCTAssertEqual(data[indexes.y], point.y)

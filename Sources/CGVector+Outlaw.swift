@@ -59,7 +59,7 @@ extension CGVector: Serializable {
 }
 
 extension CGVector: IndexSerializable {
-    public func serialized() -> [CGFloat] {
+    public func serializedIndexes() -> [CGFloat] {
         typealias indexes = CGVector.ExtractableIndexes
         
         var result = [CGFloat](repeating: 0, count: 2)

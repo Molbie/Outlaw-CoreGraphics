@@ -79,7 +79,7 @@ extension CGAffineTransform: Serializable {
 }
 
 extension CGAffineTransform: IndexSerializable {
-    public func serialized() -> [CGFloat] {
+    public func serializedIndexes() -> [CGFloat] {
         typealias indexes = CGAffineTransform.ExtractableIndexes
         
         var result = [CGFloat](repeating: 0, count: 6)
