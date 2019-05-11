@@ -12,7 +12,11 @@ import Outlaw
 
 
 class CGLineJoinTests: XCTestCase {
-    fileprivate typealias strings = CGLineJoin.StringValues
+    static var allTests = [("testStringInit", testStringInit),
+                           ("testUpperStringInit", testUpperStringInit),
+                           ("testStringValue", testStringValue)]
+    
+    private typealias strings = CGLineJoin.StringValues
     
     func testStringInit() {
         let miter = CGLineJoin(stringValue: strings.miter)

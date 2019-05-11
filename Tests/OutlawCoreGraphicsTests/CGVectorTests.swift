@@ -12,8 +12,14 @@ import Outlaw
 
 
 class CGVectorTests: XCTestCase {
-    fileprivate typealias keys = CGVector.ExtractableKeys
-    fileprivate typealias indexes = CGVector.ExtractableIndexes
+    static var allTests = [("testExtractableValue", testExtractableValue),
+                           ("testIndexExtractableValue", testIndexExtractableValue),
+                           ("testInvalidValue", testInvalidValue),
+                           ("testSerializable", testSerializable),
+                           ("testIndexSerializable", testIndexSerializable)]
+    
+    private typealias keys = CGVector.ExtractableKeys
+    private typealias indexes = CGVector.ExtractableIndexes
     
     func testExtractableValue() {
         let rawData: [String: CGFloat] = [keys.dx: 1,

@@ -11,20 +11,20 @@ import Outlaw
 
 
 public extension CGRect {
-    public struct ExtractableKeys {
+    struct ExtractableKeys {
         public static let x = "x"
         public static let y = "y"
         public static let width = "width"
         public static let height = "height"
     }
-    public struct ExtractableIndexes {
+    struct ExtractableIndexes {
         public static let x: Int = 0
         public static let y: Int = 1
         public static let width: Int = 2
         public static let height: Int = 3
     }
-    fileprivate typealias keys = CGRect.ExtractableKeys
-    fileprivate typealias indexes = CGRect.ExtractableIndexes
+    private typealias keys = CGRect.ExtractableKeys
+    private typealias indexes = CGRect.ExtractableIndexes
 }
 
 extension CGRect: Value {

@@ -11,16 +11,16 @@ import Outlaw
 
 
 public extension CGVector {
-    public struct ExtractableKeys {
+    struct ExtractableKeys {
         public static let dx = "dx"
         public static let dy = "dy"
     }
-    public struct ExtractableIndexes {
+    struct ExtractableIndexes {
         public static let dx: Int = 0
         public static let dy: Int = 1
     }
-    fileprivate typealias keys = CGVector.ExtractableKeys
-    fileprivate typealias indexes = CGVector.ExtractableIndexes
+    private typealias keys = CGVector.ExtractableKeys
+    private typealias indexes = CGVector.ExtractableIndexes
 }
 
 extension CGVector: Value {

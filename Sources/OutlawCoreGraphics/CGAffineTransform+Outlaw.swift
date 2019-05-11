@@ -11,7 +11,7 @@ import Outlaw
 
 
 public extension CGAffineTransform {
-    public struct ExtractableKeys {
+    struct ExtractableKeys {
         public static let a = "a"
         public static let b = "b"
         public static let c = "c"
@@ -19,7 +19,7 @@ public extension CGAffineTransform {
         public static let tx = "tx"
         public static let ty = "ty"
     }
-    public struct ExtractableIndexes {
+    struct ExtractableIndexes {
         public static let a: Int = 0
         public static let b: Int = 1
         public static let c: Int = 2
@@ -27,8 +27,8 @@ public extension CGAffineTransform {
         public static let tx: Int = 4
         public static let ty: Int = 5
     }
-    fileprivate typealias keys = CGAffineTransform.ExtractableKeys
-    fileprivate typealias indexes = CGAffineTransform.ExtractableIndexes
+    private typealias keys = CGAffineTransform.ExtractableKeys
+    private typealias indexes = CGAffineTransform.ExtractableIndexes
 }
 
 extension CGAffineTransform: Value {

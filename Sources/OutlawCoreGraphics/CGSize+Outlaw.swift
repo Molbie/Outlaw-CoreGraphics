@@ -11,16 +11,16 @@ import Outlaw
 
 
 public extension CGSize {
-    public struct ExtractableKeys {
+    struct ExtractableKeys {
         public static let width = "width"
         public static let height = "height"
     }
-    public struct ExtractableIndexes {
+    struct ExtractableIndexes {
         public static let width: Int = 0
         public static let height: Int = 1
     }
-    fileprivate typealias keys = CGSize.ExtractableKeys
-    fileprivate typealias indexes = CGSize.ExtractableIndexes
+    private typealias keys = CGSize.ExtractableKeys
+    private typealias indexes = CGSize.ExtractableIndexes
 }
 
 extension CGSize: Value {

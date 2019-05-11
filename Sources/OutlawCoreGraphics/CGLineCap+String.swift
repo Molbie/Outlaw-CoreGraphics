@@ -10,16 +10,16 @@ import CoreGraphics
 
 
 public extension CGLineCap {
-    public struct StringValues {
+    struct StringValues {
         public static let butt = "butt"
         public static let round = "round"
         public static let square = "square"
     }
-    fileprivate typealias strings = CGLineCap.StringValues
+    private typealias strings = CGLineCap.StringValues
 }
 
 public extension CGLineCap {
-    public init?(stringValue: String) {
+    init?(stringValue: String) {
         switch stringValue.lowercased() {
             case strings.butt:
                 self = .butt
@@ -32,7 +32,7 @@ public extension CGLineCap {
         }
     }
     
-    public var stringValue: String {
+    var stringValue: String {
         let result: String
         switch self {
             case .butt:
@@ -41,6 +41,8 @@ public extension CGLineCap {
                 result = strings.round
             case .square:
                 result = strings.square
+            @unknown default:
+                fatalError()
         }
         
         return result

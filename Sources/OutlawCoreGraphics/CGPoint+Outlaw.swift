@@ -11,16 +11,16 @@ import Outlaw
 
 
 public extension CGPoint {
-    public struct ExtractableKeys {
+    struct ExtractableKeys {
         public static let x = "x"
         public static let y = "y"
     }
-    public struct ExtractableIndexes {
+    struct ExtractableIndexes {
         public static let x: Int = 0
         public static let y: Int = 1
     }
-    fileprivate typealias keys = CGPoint.ExtractableKeys
-    fileprivate typealias indexes = CGPoint.ExtractableIndexes
+    private typealias keys = CGPoint.ExtractableKeys
+    private typealias indexes = CGPoint.ExtractableIndexes
 }
 
 extension CGPoint: Value {

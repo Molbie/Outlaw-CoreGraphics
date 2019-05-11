@@ -12,6 +12,10 @@ import Outlaw
 
 
 class CGFloatTests: XCTestCase {
+    static var allTests = [("testExtractableValue", testExtractableValue),
+                           ("testIndexExtractableValue", testIndexExtractableValue),
+                           ("testInvalidValue", testInvalidValue)]
+    
     func testExtractableValue() {
         let data: [String: CGFloat] = ["cgFloat": 1]
         let cgFloat: CGFloat = try! data.value(for: "cgFloat")

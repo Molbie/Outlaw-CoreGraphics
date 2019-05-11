@@ -12,8 +12,14 @@ import Outlaw
 
 
 class CGRectTests: XCTestCase {
-    fileprivate typealias keys = CGRect.ExtractableKeys
-    fileprivate typealias indexes = CGRect.ExtractableIndexes
+    static var allTests = [("testExtractableValue", testExtractableValue),
+                           ("testIndexExtractableValue", testIndexExtractableValue),
+                           ("testInvalidValue", testInvalidValue),
+                           ("testSerializable", testSerializable),
+                           ("testIndexSerializable", testIndexSerializable)]
+    
+    private typealias keys = CGRect.ExtractableKeys
+    private typealias indexes = CGRect.ExtractableIndexes
     
     func testExtractableValue() {
         let rawData: [String: CGFloat] = [keys.x: 1,

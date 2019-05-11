@@ -12,7 +12,11 @@ import Outlaw
 
 
 class CGLineCapTests: XCTestCase {
-    fileprivate typealias strings = CGLineCap.StringValues
+    static var allTests = [("testStringInit", testStringInit),
+                           ("testUpperStringInit", testUpperStringInit),
+                           ("testStringValue", testStringValue)]
+    
+    private typealias strings = CGLineCap.StringValues
     
     func testStringInit() {
         let butt = CGLineCap(stringValue: strings.butt)
